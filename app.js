@@ -1,4 +1,6 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
+const connectDB = require('./db/connect');
 
 // async errors
 
@@ -28,7 +30,7 @@ const port  = process.env.PORT || 3000;
 
 const start = async () => {
     try {
-        // connectDB
+        await connectDB(process.env.MONGO_URI)
         app.listen(port, console.log(`Server is listening on port: ${port}`))
     }
     catch (error){
